@@ -4,6 +4,11 @@
 %h1= @question.body
 = asked_by(@question)
 
+%p
+  %form{:action => flag_question_path, :method => "POST"}
+    %button{:type => "submit", :class => "btn btn-small btn-warning"}
+      Flag this question
+
 - @answers.each do |answer|
   %div
     = answer.candidate.name

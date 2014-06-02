@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
-  before_filter :fetch_question, only: [:show]
+  before_filter :fetch_question, only: [:show, :flag]
   before_filter :fetch_answers, only: [:show]
 
   def trending
@@ -31,6 +31,13 @@ class QuestionsController < ApplicationController
     else
       render action: "new"
     end
+  end
+
+  # POST /questions/1/flag
+  def flag
+    puts "Flagged!"
+    @question.flag
+    redirect_to @question
   end
 
   private

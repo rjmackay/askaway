@@ -77,9 +77,11 @@ ActiveRecord::Schema.define(version: 20140529062245) do
     t.integer  "topic_id"
     t.integer  "comments_count", default: 0, null: false
     t.integer  "user_id",                    null: false
+    t.integer  "flags_count",    default: 0
   end
 
   add_index "questions", ["answers_count"], name: "index_questions_on_answers_count", using: :btree
+  add_index "questions", ["flags_count"], name: "index_questions_on_flags_count", using: :btree
   add_index "questions", ["topic_id"], name: "index_questions_on_topic_id", using: :btree
   add_index "questions", ["user_id"], name: "index_questions_on_user_id", using: :btree
   add_index "questions", ["vote_count"], name: "index_questions_on_vote_count", using: :btree

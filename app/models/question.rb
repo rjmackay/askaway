@@ -42,6 +42,16 @@ class Question < ActiveRecord::Base
     answers.any?
   end
 
+  def flag
+    self.flags_count = self.flags_count + 1
+    save
+  end
+
+  def clear_flag
+    self.flags_count = 0
+    save
+  end
+
   private
 
   def init_topic
